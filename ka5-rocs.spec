@@ -1,20 +1,41 @@
-%define		kdeappsver	18.04.0
-%define		qtver		5.8.0
+%define		kdeappsver	18.12.0
+%define		qtver		5.9.0
 %define		kaname		rocs
 Summary:	rocs
 Name:		ka5-%{kaname}
-Version:	18.04.0
+Version:	18.12.0
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Applications
 Source0:	http://download.kde.org/stable/applications/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	722b474e25d2920ee7afc41ec8387fb8
+# Source0-md5:	f76e282ca39ce78a9bac64ff9df2fdeb
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
+BuildRequires:	Qt5Gui-devel
+BuildRequires:	Qt5Network-devel >= 5.11.1
+BuildRequires:	Qt5Qml-devel >= 5.11.1
+BuildRequires:	Qt5Quick-devel >= 5.11.1
+BuildRequires:	Qt5Script-devel
 BuildRequires:	Qt5ScriptTools-devel >= %{qtver}
+BuildRequires:	Qt5Svg-devel
+BuildRequires:	Qt5Test-devel
+BuildRequires:	Qt5WebKit-devel
+BuildRequires:	Qt5Widgets-devel
+BuildRequires:	Qt5XmlPatterns-devel
+BuildRequires:	boost-devel >= 1.49
 BuildRequires:	cmake >= 2.8.12
-BuildRequires:	grantlee-qt5-devel
-BuildRequires:	kf5-extra-cmake-modules >= 1.4.0
+BuildRequires:	gettext-devel
+BuildRequires:	grantlee-qt5-devel >= 5.0
+BuildRequires:	kf5-extra-cmake-modules >= 5.53.0
+BuildRequires:	kf5-karchive-devel >= 5.15
+BuildRequires:	kf5-kconfig-devel >= 5.15
+BuildRequires:	kf5-kcoreaddons-devel >= 5.15
+BuildRequires:	kf5-kcrash-devel >= 5.15
+BuildRequires:	kf5-kdeclarative-devel >= 5.15
+BuildRequires:	kf5-ki18n-devel >= 5.15
+BuildRequires:	kf5-kitemviews-devel >= 5.15
+BuildRequires:	kf5-ktexteditor-devel >= 5.15
+BuildRequires:	kf5-kxmlgui-devel >= 5.15
 BuildRequires:	qt5-build >= %{qtver}
 BuildRequires:	rpmbuild(macros) >= 1.164
 BuildRequires:	shared-mime-info
@@ -23,11 +44,23 @@ BuildRequires:	xz
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-rocs.
+Rocs is a Graph Theory IDE for everybody interested in designing and
+analyzing graph algorithms (e.g., lecturers, students, researchers).
+For all these users, Rocs provides an easy to use visual data
+structure editor and a powerful scripting engine to execute
+algorithms.
+
+Features
+
+- Canvas for Graph Drawing
+- IDE for Graph related Programming, using Javascript as it's main
+  language, plus the graph library
+- Data Structures are extensible from the scripting interface, so you
+  can do anything you want.
 
 %package devel
 Summary:	Header files for %{kaname} development
-Summary(pl.UTF-8):	Pliki nagłówkowe dla programistów używających %{kpname}
+Summary(pl.UTF-8):	Pliki nagłówkowe dla programistów używających %{kaname}
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
@@ -96,5 +129,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/rocs
 
 %files devel
+%defattr(644,root,root,755)
 %{_includedir}/rocs
 %{_libdir}/librocsgraphtheory.so
