@@ -1,14 +1,15 @@
-%define		kdeappsver	18.12.1
+%define		kdeappsver	19.04.1
+%define		kframever	5.56.0
 %define		qtver		5.9.0
 %define		kaname		rocs
 Summary:	rocs
 Name:		ka5-%{kaname}
-Version:	18.12.1
+Version:	19.04.1
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Applications
 Source0:	http://download.kde.org/stable/applications/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	f5156dabfc8283fe7a3f648b7c5226cd
+# Source0-md5:	bdd61d25878006c0164175d18b9536a2
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	Qt5Gui-devel
@@ -26,16 +27,16 @@ BuildRequires:	boost-devel >= 1.49
 BuildRequires:	cmake >= 2.8.12
 BuildRequires:	gettext-devel
 BuildRequires:	grantlee-qt5-devel >= 5.0
-BuildRequires:	kf5-extra-cmake-modules >= 5.53.0
-BuildRequires:	kf5-karchive-devel >= 5.15
-BuildRequires:	kf5-kconfig-devel >= 5.15
-BuildRequires:	kf5-kcoreaddons-devel >= 5.15
-BuildRequires:	kf5-kcrash-devel >= 5.15
-BuildRequires:	kf5-kdeclarative-devel >= 5.15
-BuildRequires:	kf5-ki18n-devel >= 5.15
-BuildRequires:	kf5-kitemviews-devel >= 5.15
-BuildRequires:	kf5-ktexteditor-devel >= 5.15
-BuildRequires:	kf5-kxmlgui-devel >= 5.15
+BuildRequires:	kf5-extra-cmake-modules >= %{kframever}
+BuildRequires:	kf5-karchive-devel >= %{kframever}
+BuildRequires:	kf5-kconfig-devel >= %{kframever}
+BuildRequires:	kf5-kcoreaddons-devel >= %{kframever}
+BuildRequires:	kf5-kcrash-devel >= %{kframever}
+BuildRequires:	kf5-kdeclarative-devel >= %{kframever}
+BuildRequires:	kf5-ki18n-devel >= %{kframever}
+BuildRequires:	kf5-kitemviews-devel >= %{kframever}
+BuildRequires:	kf5-ktexteditor-devel >= %{kframever}
+BuildRequires:	kf5-kxmlgui-devel >= %{kframever}
 BuildRequires:	ninja
 BuildRequires:	qt5-build >= %{qtver}
 BuildRequires:	rpmbuild(macros) >= 1.164
@@ -79,6 +80,7 @@ install -d build
 cd build
 %cmake \
 	-G Ninja \
+	-DHTML_INSTALL_DIR=%{_kdedocdir} \
 	-DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
 	..
 %ninja_build
