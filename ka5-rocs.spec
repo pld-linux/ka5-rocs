@@ -1,18 +1,18 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeappsver	22.04.2
-%define		kframever	5.56.0
-%define		qtver		5.9.0
+%define		kdeappsver	22.04.3
+%define		kframever	5.94.0
+%define		qtver		5.15.2
 %define		kaname		rocs
 Summary:	rocs
 Name:		ka5-%{kaname}
-Version:	22.04.2
+Version:	22.04.3
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Applications
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	7b9c455747922f41c879e00bf582675f
+# Source0-md5:	9e9e1020ceb68880b50af7fb39d6053e
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	Qt5Gui-devel
